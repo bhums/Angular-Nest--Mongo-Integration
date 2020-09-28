@@ -1,0 +1,38 @@
+<!-- <p>main works!</p>
+
+<a [routerLink]="['contact']">
+  link to contact component
+</a> -->
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Users List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped" #userTable>
+      <thead>
+        <tr>
+
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.emailId}}</td>
+          <td>
+            <div class="btn-div">
+              <button class="btn-primary" id={{user._id}} (click)="onEditClick($event)">Edit</button>
+              <button class="btn-danger" id={{user.id}} (click)="onDelClick($event)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
