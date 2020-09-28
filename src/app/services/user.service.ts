@@ -57,14 +57,16 @@ export class UserService {
     });
 
   }
-  // public saveUser(data): any {
-  //   return this._http.post<User>(`${this.getUsersUrl}/post`, JSON.stringify(data), {
-  //     headers: new HttpHeaders({
-  //          'Content-Type':  'application/json',
-  //        })
-  //   });
+  public saveUser(data): any {
+    return this._http.post<User>(`${this.getUsersUrl}/post`, JSON.stringify(data), {
+      headers: new HttpHeaders({
+           'Content-Type':  'application/json',
+         })
+    });
 
-  //}
-
+  }
+  public deleteUser(id): any {
+    return this._http.delete<User>(`${this.getUsersUrl}/delete?userID=${id}`);
+  }
 
 }

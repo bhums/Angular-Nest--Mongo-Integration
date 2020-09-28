@@ -64,22 +64,37 @@ export class RegisterComponent implements OnInit {
         // if (this.registerForm.invalid) {
         //     return;
         // }
-debugger;
+
         this.loading = true;
+        if (!this.isSave) {
+          this.userService.updateUser(this.selectedRow[0]._id, this.registerForm.value)
+          .subscribe(
+              data => {
+                 alert('User updated successfully');
+                this.router.navigate(['/main']);
+              },
+              error => {
+                  this.loading = false;
+              });
+          }
+          else {
+            try {
+              this.userService.saveUser(this.registerForm.value)
+            .subscribe(
+                data => {
+                   alert('User saved successfully');
+                  this.router.navigate(['/main']);
+                },
+                error => {
+                    this.loading = false;
+                });
+            } catch (e) {
+              console.log(e);
+            }
 
+            }
 
-        this.userService.updateUser(this.selectedRow[0]._id, this.registerForm.value)
-        .subscribe(
-            data => {
-               alert('User updated successfully');
-              this.router.navigate(['/main']);
-            },
-            error => {
-                this.loading = false;
-            });
         }
-
-
 
 
 }

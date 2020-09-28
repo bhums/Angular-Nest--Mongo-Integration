@@ -27,6 +27,9 @@ export class MainComponent implements OnInit {
   }
   onDelClick(event: Event) {
     const itemId: any = event.currentTarget['id'];
+    this.userService.deleteUser(itemId).subscribe( data => {
+      alert('User deleted successfully');
+    });
   }
   onEditClick(event: Event) {
     const itemId: any = event.currentTarget['id'];
