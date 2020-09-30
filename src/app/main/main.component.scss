@@ -1,10 +1,18 @@
 .btn-div {
   display: inline-block;
   padding-top:1px;
+  width: 200px;
   button {
     width: 80px;
     cursor: pointer;
+    margin: 0 5px 0 5px;
   }
+}
+h2{
+  display: inline;
+}
+a {
+  float: right;
 }
 .table td {
  // border: 1px solid red;

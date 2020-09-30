@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'e2e-ui';
-  currentUser = false;
+  logout = 'About Us';
+  currentUser = true;
 }

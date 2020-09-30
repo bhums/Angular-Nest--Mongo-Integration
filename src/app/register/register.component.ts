@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
         private router: Router,
         private activatedRoute: ActivatedRoute,
         // private authenticationService: AuthenticationService,
-         private userService: UserService,
+        private userService: UserService,
         // private alertService: AlertService
     ) {
         // redirect to home if already logged in
@@ -40,7 +40,6 @@ export class RegisterComponent implements OnInit {
           //  password: ['', [Validators.required, Validators.minLength(6)]]
         });
         this.activatedRoute.queryParams.subscribe((params: Params) => {
-         debugger;
          if(Object.keys(params).length !== 0) {
           this.selectedRow = JSON.parse(params['selDetails']);
           this.registerForm.get('firstName').setValue(this.selectedRow[0].firstName);
@@ -61,16 +60,16 @@ export class RegisterComponent implements OnInit {
         this.submitted = true;
 
         // stop here if form is invalid
-        // if (this.registerForm.invalid) {
-        //     return;
-        // }
+        if (this.registerForm.invalid) {
+            return;
+        }
 
         this.loading = true;
         if (!this.isSave) {
           this.userService.updateUser(this.selectedRow[0]._id, this.registerForm.value)
           .subscribe(
               data => {
-                 alert('User updated successfully');
+                alert('User updated successfully');
                 this.router.navigate(['/main']);
               },
               error => {
@@ -82,7 +81,7 @@ export class RegisterComponent implements OnInit {
               this.userService.saveUser(this.registerForm.value)
             .subscribe(
                 data => {
-                   alert('User saved successfully');
+                  alert('User saved successfully');
                   this.router.navigate(['/main']);
                 },
                 error => {

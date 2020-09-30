@@ -45,11 +45,13 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
-        this.submitted = true;
-        this.router.navigate(['\main'])
+
         // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
+        } else {
+          this.submitted = true;
+          this.router.navigate(['\main'])
         }
 
         this.loading = true;

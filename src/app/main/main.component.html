@@ -4,16 +4,15 @@
   link to contact component
 </a> -->
 
-
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>Users List</h2>
+    <h2>Users</h2>
+    <a routerLink="/register">Create a User</a>
   </div>
   <div class="panel-body">
     <table class="table table-striped" #userTable>
       <thead>
         <tr>
-
           <th>Firstname</th>
           <th>Lastname</th>
           <th>Email</th>
@@ -21,14 +20,60 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users">
-
-          <td>{{user.firstName}}</td>
-          <td>{{user.lastName}}</td>
-          <td>{{user.emailId}}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.emailId }}</td>
           <td>
             <div class="btn-div">
-              <button class="btn-primary" id={{user._id}} (click)="onEditClick($event)">Edit</button>
-              <button class="btn-danger" id={{user._id}} (click)="onDelClick($event)">Delete</button>
+              <button
+                class="btn-primary"
+                id="{{ user._id }}"
+                (click)="onEditClick($event)"
+              >
+                Edit
+              </button>
+              <button
+                id="{{ user._id }}"
+                class="btn-danger"
+                data-toggle="modal"
+                data-target="#myModal"
+                (click)="onGetId($event)"
+              >
+                Delete
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                      <h4 class="modal-title">Warning!</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Are you sure you want to delete the user.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="{{ user._id }}"
+                        data-dismiss="modal"
+                        (click)="onDelClick($event)"
+                      >
+                        Yes
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </td>
         </tr>
